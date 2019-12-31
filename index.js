@@ -3,10 +3,10 @@ const github = require('@actions/github');
 
 async function getAllComments(client, pullRequest, comment) {
     try {
-      const allComments = await client.pulls.listReviews({
+      const allComments = await client.issues.listComments({
             owner: pullRequest.owner,
             repo: pullRequest.repo,
-            pull_number: pullRequest.number,
+            issue_number: pullRequest.number
         });
       const returnComments = allComments.data.map(a => a.body);
       return returnComments;
@@ -17,12 +17,11 @@ async function getAllComments(client, pullRequest, comment) {
 
 async function addComment(client, pullRequest, comment) {
     try {
-      await client.pulls.createReview({
+      await client.issues.createComment({
             owner: pullRequest.owner,
             repo: pullRequest.repo,
-            pull_number: pullRequest.number,
-            body: comment,
-            event: 'COMMENT'
+            issue_number: pullRequest.number,
+            body: comment
         });
     } catch (error) {
       core.setFailed(error.message);
