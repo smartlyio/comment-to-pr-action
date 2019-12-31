@@ -1,13 +1,18 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Comment to PR'
+description: 'Comment to a PR with a message. By default, comments if message is not already present.'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  repo-token:
+    description: Repo token from the action
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we we greeted you'
+    default: ''
+  comment:
+    description: 'Text of comment'
+    required: true
+    default: 'Comment Text'
+  exclusive:
+    description: 'Whether the comment should be exclusive or not'
+    required: false
+    default: true
 runs:
   using: 'node12'
   main: 'index.js'
