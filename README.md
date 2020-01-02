@@ -8,7 +8,7 @@ This action will add a comment to a PR. If `exclusive` flag is not explicitly se
 
 **Required** The text of the comment.
 
-### `repo-token`
+### `GITHUB_TOKEN`
 
 **Required** The token to access the repo, same one as is available in the action.
 

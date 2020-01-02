@@ -31,7 +31,7 @@ async function addComment(client, pullRequest, comment) {
 async function run ()
 {
     // Get client and context
-    const client = new github.GitHub(core.getInput('repo-token'));
+    const client = new github.GitHub(core.getInput('GITHUB_TOKEN'));
     const context = github.context;
     const pullRequest = context.issue;
     const comment = core.getInput('comment');

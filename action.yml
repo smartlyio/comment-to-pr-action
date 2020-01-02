@@ -1,7 +1,7 @@
 name: 'Comment to PR'
 description: 'Comment to a PR with a message. By default, comments if message is not already present.'
 inputs:
-  repo-token:
+  GITHUB_TOKEN:
     description: Repo token from the action
     required: true
     default: ''
