@@ -21,7 +21,7 @@ This action will add a comment to a PR. If `exclusive` flag is not explicitly se
 ```yaml
 uses: smartlyio/comment-to-pr-action@v1
 with:
-  repo-token: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   comment: 'The kittens have decreed that this PR is acceptable!'
 ```
 ## Development
@@ -39,6 +39,8 @@ Run all the above: `npm run all`
 Follow these steps to release a new version
 
 1. Create release branch: `git checkout -b v{next-version}`
-1. Release the version: `npm run release`
-1. Add the built package to version control: `git add dist`
-1. Push the new branch: `git push origin/v{next-version}`
+2. Compile your `index.js` file. `ncc build index.js`
+3. Push the required changes to git:
+    `git add dist/index.js`
+    `git commit -m "New version with great changes"`
+    `git push`
