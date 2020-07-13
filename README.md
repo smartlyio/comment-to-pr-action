@@ -19,7 +19,7 @@ This action will add a comment to a PR. If `exclusive` flag is not explicitly se
 ## Example usage
 
 ```yaml
-uses: smartlyio/comment-to-pr-action@v1
+uses: smartlyio/comment-to-pr-action@v3
 with:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   comment: 'The kittens have decreed that this PR is acceptable!'
