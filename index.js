@@ -37,8 +37,7 @@ async function run ()
     const comment = core.getInput('comment');
     const exclusive = core.getInput('exclusive');
 
-    let allComments;
-    await getAllComments(client, pullRequest).then(function(result) { allComments = result;});
+    const allComments = await getAllComments(client, pullRequest)
 
     if (allComments.includes(comment) && exclusive) {
         console.log("COMMENT ALREADY EXISTS.")
