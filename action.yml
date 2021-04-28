@@ -13,6 +13,14 @@ inputs:
     description: 'Whether the comment should be exclusive or not'
     required: false
     default: true
+  repo_name:
+    description: 'Repo name in the format: smartlyio/test-repo. Defaults to current Repo.'
+    required: false
+    default: ${{ github.repository }}
+  pr_number:
+    description: 'PR number. Defaults to current PR'
+    required: false
+    default: ${{ github.event.pull_request.number }}
 runs:
   using: 'node12'
   main: 'dist/index.js'
