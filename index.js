@@ -36,7 +36,7 @@ async function run ()
     const [owner, repo] = core.getInput('repo_name').split('/');
     const issue_number = core.getInput('pr_number');
     const comment = core.getInput('comment');
-    const exclusive = core.getInput('exclusive');
+    const exclusive = core.getBooleanInput('exclusive');
 
     const allComments = await getAllComments(client, owner, repo, issue_number)
 
