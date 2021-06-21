@@ -10079,6 +10079,11 @@ async function addComment(client, owner, repo, issue_number, comment) {
     }
 }
 
+function toBoolean(value) {
+  const regexp = new RegExp(/^(true|1|on|yes)$/i);
+  return regexp.test(value.trim());
+}
+
 async function run ()
 {
     // Get client and context
@@ -10087,7 +10092,7 @@ async function run ()
     const [owner, repo] = core.getInput('repo_name').split('/');
     const issue_number = core.getInput('pr_number');
     const comment = core.getInput('comment');
-    const exclusive = core.getInput('exclusive');
+    const exclusive = toBoolean(core.getInput('exclusive'));
 
     const allComments = await getAllComments(client, owner, repo, issue_number)
 
