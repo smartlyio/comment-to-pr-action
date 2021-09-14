@@ -14,9 +14,24 @@ on:
     branches: [master]
 
 jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: "Install"
+      run: |
+        npm install
+    - name: "Prettier"
+      run: |
+        npm run format-check
+    - name: "build"
+      run: |
+        npm run package
+
   release:
     runs-on: ubuntu-18.04
     name: "Release action"
+    needs: [build]
     steps:
       - uses: actions/checkout@v2
         with:
@@ -101,6 +116,17 @@ jobs:
           npm install
           npm version ${{ steps.version_check.outputs.version }}
           git push && git push --tags
+      - name: Update action without release
+        if: steps.check_branch_behind.outputs.BRANCH_UP_TO_DATE == 'true' && steps.version_check.outputs.continue_release == 'false'
+        run: |
+          npm install
+          npm run version
+          git_changes="$(git status --porcelain -- dist || true)"
+          if [ -n "$git_changes" ]; then
+            git add -- dist
+            git commit -m "Update compiled action"
+            git push
+          fi
       - name: Update release branch
         if: steps.check_branch_behind.outputs.BRANCH_UP_TO_DATE == 'true' && steps.version_check.outputs.continue_release == 'true'
         run: |
