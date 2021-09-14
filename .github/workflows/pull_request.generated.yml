@@ -42,3 +42,4 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         comment: "Test adding comment to PR"
+        exclusive: false
