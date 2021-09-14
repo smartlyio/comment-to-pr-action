@@ -1,6 +1,6 @@
 {
   "name": "comment-to-pr-javascript-action",
-  "version": "1.0.0",
+  "version": "5.0.1",
   "description": "This adds a comment to the PR it is called from.",
   "main": "index.js",
   "scripts": {
@@ -13,10 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/actions/hello-world-javascript-action/issues"
-  },
-  "homepage": "https://github.com/actions/hello-world-javascript-action#readme",
   "dependencies": {
     "@actions/core": "^1.1.0",
     "@actions/github": "^1.1.0"
