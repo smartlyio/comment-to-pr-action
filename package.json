@@ -4,7 +4,13 @@
   "description": "This adds a comment to the PR it is called from.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write index.js",
+    "format-check": "prettier --check index.js",
+    "package": "ncc build --source-map",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo \"Error: eslint not configured\" && exit 1",
+    "all": "npm run format-check && npm run package",
+    "version": "npm run package && git add -- dist"
   },
   "repository": {
     "type": "git",
@@ -16,5 +22,8 @@
   "dependencies": {
     "@actions/core": "^1.1.0",
     "@actions/github": "^1.1.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.31.1"
   }
 }
