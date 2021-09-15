@@ -1,0 +1,13 @@
+build:
+  runs-on: <%= ubuntu_version %>
+  steps:
+  - uses: actions/checkout@v2
+  - name: "Install"
+    run: |
+      npm install
+  - name: "Prettier"
+    run: |
+      npm run format-check
+  - name: "build"
+    run: |
+      npm run package
