@@ -3,7 +3,7 @@ const github = require("@actions/github");
 
 async function getAllComments(client, owner, repo, issue_number) {
   try {
-    const allComments = await client.issues.listComments({
+    const allComments = await client.rest.issues.listComments({
       owner,
       repo,
       issue_number,
@@ -17,7 +17,7 @@ async function getAllComments(client, owner, repo, issue_number) {
 
 async function addComment(client, owner, repo, issue_number, comment) {
   try {
-    await client.issues.createComment({
+    await client.rest.issues.createComment({
       owner,
       repo,
       issue_number,
@@ -35,7 +35,7 @@ function toBoolean(value) {
 
 async function run() {
   // Get client and context
-  const client = new github.GitHub(core.getInput("GITHUB_TOKEN"));
+  const client = github.getOctokit(core.getInput("GITHUB_TOKEN"));
   const context = github.context;
   const [owner, repo] = core.getInput("repo_name").split("/");
   const issue_number = core.getInput("pr_number");
