@@ -24,7 +24,7 @@
     "@actions/github": "^1.1.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.31.1",
-    "prettier": "^2.4.0"
+    "@vercel/ncc": "0.31.1",
+    "prettier": "2.4.0"
   }
 }
