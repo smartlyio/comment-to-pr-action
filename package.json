@@ -1,6 +1,6 @@
 {
   "name": "comment-to-pr-javascript-action",
-  "version": "5.1.8",
+  "version": "5.1.9",
   "description": "This adds a comment to the PR it is called from.",
   "main": "index.js",
   "scripts": {
