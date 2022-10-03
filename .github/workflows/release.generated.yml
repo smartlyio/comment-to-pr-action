@@ -32,26 +32,6 @@ jobs:
       run: |
         npm run package
 
-  test:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set Node.js 16.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-    - name: "Build action for test"
-      run: |
-        npm install
-        npm run all
-        git clean -fXd
-    - name: Test executing the action
-      uses: ./
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        comment: "Test adding comment to PR"
-        exclusive: false
-
   release:
     runs-on: ubuntu-20.04
     name: "Build and release action"
