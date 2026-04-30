@@ -112,6 +112,12 @@
         "patch",
         "renovate-deps"
       ]
+    },
+    {
+      "description": "Pin GitHub Actions to commit SHAs only for third-party repos (not Smartly-owned)",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["/^smartlyio\\//"],
+      "pinDigests": false
     }
   ],
   "github-actions": {
